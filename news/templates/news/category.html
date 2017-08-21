@@ -1,9 +1,16 @@
-{% extends "news/base.html" %}
-{% block content %}
-<div class="container">
-{% for j in category.news_set.all %}
-    <h2>{{j.title}}</h2>
-    <p>{{j.content}}</p>
-{% endfor%}
-</div>
-  {% endblock %}
+{% extends "news/index.html" %}
+{% block news %}
+    <ul>
+        {% for n in category.news_set.all %}
+            <div class="news_headings">
+            <li><h2><a href="{% url 'news:detail' n.id %}">{{ n.title }}</a></h2></li>
+            <p>{{n.content|truncatechars_html:200}} <a href="{% url 'news:detail' n.id %}">more</a></p>
+            </div>
+        {% endfor%}
+
+{% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+
+

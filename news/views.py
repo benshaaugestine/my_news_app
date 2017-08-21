@@ -25,6 +25,8 @@ class CategoryView(generic.DetailView):
     template_name='news/category.html'
 
 
+
+
 class SearchResultView(generic.ListView):
     """ class view to display list of news  on the page """
     model = News
@@ -42,7 +44,6 @@ class SearchResultView(generic.ListView):
         category_list = Category.objects.all()
         context['category_list'] = category_list
         return context
-
 
 
 
